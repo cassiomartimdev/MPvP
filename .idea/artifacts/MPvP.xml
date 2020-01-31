@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="MPvP">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="archive" name="MPvP.jar">
+      <element id="module-output" name="MPvP" />
+    </root>
+  </artifact>
+</component>
