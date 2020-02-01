@@ -1,4 +1,4 @@
-package br.com.pvp.utils;
+package br.com.pvp.command;
 
 import java.util.List;
 
@@ -23,19 +23,19 @@ public abstract class CommandBase extends Command {
     public abstract boolean execute(CommandSender sender, String lb, String[] args);
 
     protected void sendExecutorMessage(CommandSender sender) {
-        sender.sendMessage("�b�lLOBBY �fO comando executado somente por jogadores.");
+        sender.sendMessage("§cO comando só pode ser executado por jogadores.");
     }
 
     protected void sendPermissionMessage(CommandSender sender) {
-        sender.sendMessage("�c�lPERMISSION �fVoc� n�o tem permiss�o para �6executar�f o �9comando�f.");
+        sender.sendMessage("§cVocê não possui permissão para utilizar o comando.");
     }
 
     protected void sendOfflinePlayerMessage(CommandSender sender) {
-        sender.sendMessage("�4�lOFFLINE �fO jogador est� offline no momento.");
+        sender.sendMessage("§cO jogador está offline no momento.");
     }
 
     protected boolean hasPermission(CommandSender sender, String perm) {
-        return sender.hasPermission("lobby." + perm);
+        return sender.hasPermission("pvp." + perm);
     }
 
     protected boolean isInteger(String string) {

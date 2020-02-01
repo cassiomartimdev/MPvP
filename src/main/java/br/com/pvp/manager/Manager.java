@@ -2,7 +2,7 @@ package br.com.pvp.manager;
 
 import br.com.pvp.BukkitMain;
 import br.com.pvp.utils.ClassGetter;
-import br.com.pvp.utils.CommandBase;
+import br.com.pvp.command.CommandBase;
 import br.com.pvp.utils.TimeSecond;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
