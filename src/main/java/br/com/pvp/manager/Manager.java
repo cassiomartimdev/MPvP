@@ -34,7 +34,7 @@ public class Manager {
 
     public void setup() {
 
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(BukkitMain.getPlugin(BukkitMain.class), new Runnable() {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(BukkitMain.getInstance(), new Runnable() {
             public void run() {
                 Bukkit.getPluginManager().callEvent(new TimeSecond());
             }
@@ -48,7 +48,7 @@ public class Manager {
         HandlerList.unregisterAll();
 
         for (Player all : Bukkit.getServer().getOnlinePlayers()) {
-            all.kickPlayer("§eServidor desligado ou reiniciado!");
+            all.kickPlayer("§cO servidor foi fechado. Tente entrar novamente!");
         }
         for (World world : Bukkit.getWorlds()) {
             for (Entity entity : world.getEntities()) {
@@ -60,7 +60,7 @@ public class Manager {
     class Loader {
 
         private void loadCommands() {
-            for (Class<?> classes : ClassGetter.getClassesForPackage(BukkitMain.getPlugin(BukkitMain.class),
+            for (Class<?> classes : ClassGetter.getClassesForPackage(BukkitMain.getInstance(),
                     "br.com.pvp")) {
                 if (CommandBase.class.isAssignableFrom(classes) && classes != CommandBase.class) {
                     try {
@@ -75,12 +75,12 @@ public class Manager {
         }
 
         private void loadEvents() {
-            for (Class<?> classes : ClassGetter.getClassesForPackage(BukkitMain.getPlugin(BukkitMain.class),
+            for (Class<?> classes : ClassGetter.getClassesForPackage(BukkitMain.getInstance(),
                     "br.com.pvp")) {
                 if (Listener.class.isAssignableFrom(classes)) {
                     try {
                         Listener classEvents = (Listener) classes.newInstance();
-                        Bukkit.getPluginManager().registerEvents(classEvents, BukkitMain.getPlugin(BukkitMain.class));
+                        Bukkit.getPluginManager().registerEvents(classEvents, BukkitMain.getInstance());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
